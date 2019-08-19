@@ -29,17 +29,22 @@ public class cityHostelSearch {
 	String testCityName = null;
 	static ExtentTest test;
 	static ExtentReports report;
+	String scenarioName=null;
 
 	@Before
 	public void setUp(Scenario scenario) {
+		scenarioName = scenario.getName();
+		if (scenarioName.contains("navigation"))
+		{
 		System.setProperty("webdriver.chrome.driver",
 				System.getProperty("user.dir") + "\\src\\test\\resources\\chrome\\chromedriver1.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		}
 
 		// Reporting
-		String scenarioName = scenario.getName();
+		
 		String reportName = scenarioName.replaceAll(" ", "");
 		reportName = scenarioName.replaceAll("\"", "");
 		report = new ExtentReports(System.getProperty("user.dir") + "\\target\\reports\\" + reportName + ".html");
@@ -143,7 +148,10 @@ public class cityHostelSearch {
 
 	@After
 	public void tearDown() {
+		if (scenarioName.contains("navigation"))
+		{
 		driver.quit();
+		}
 		report.endTest(test);
 		report.flush();
 	}
