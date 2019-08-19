@@ -12,11 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.hostelworld.utils.ReportingUtility;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import automationAssignment.reporter;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -42,7 +42,7 @@ public class cityHostelSearch {
 		String scenarioName = scenario.getName();
 		String reportName = scenarioName.replaceAll(" ", "");
 		reportName = scenarioName.replaceAll("\"", "");
-		report = new ExtentReports(System.getProperty("user.dir") + "\\reports\\" + reportName + ".html");
+		report = new ExtentReports(System.getProperty("user.dir") + "\\target\\reports\\" + reportName + ".html");
 		test = report.startTest(scenarioName);
 	}
 
@@ -51,10 +51,10 @@ public class cityHostelSearch {
 		try {
 			driver.get("https://www.hostelworld.com");
 			test.log(LogStatus.PASS,
-					test.addScreenCapture(reporter.capture(driver)) + "Navigated to Hostel world website");
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Navigated to Hostel world website");
 		} catch (Exception e) {
 			test.log(LogStatus.FAIL,
-					test.addScreenCapture(reporter.capture(driver)) + "Error while navigating to Hostel world website");
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Error while navigating to Hostel world website");
 			driver.quit();
 		}
 	}
@@ -71,10 +71,10 @@ public class cityHostelSearch {
 							By.xpath("//input[@name='search_keywords' and @id='home-search-keywords']")))
 					.sendKeys(cityName);
 			test.log(LogStatus.PASS,
-					test.addScreenCapture(reporter.capture(driver)) + "Entered city name as " + cityName);
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Entered city name as " + cityName);
 		} catch (Exception e) {
 			test.log(LogStatus.FAIL,
-					test.addScreenCapture(reporter.capture(driver)) + "Error while entering city name as " + cityName);
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Error while entering city name as " + cityName);
 			driver.quit();
 		}
 	}
@@ -85,14 +85,14 @@ public class cityHostelSearch {
 			List<WebElement> myList = new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(
 							"#top-search > div.d-block.d-block.search-form-background.pt-2.pb-2 > div > div.suggestions-container > ul > li.hover")));
-			test.log(LogStatus.PASS, test.addScreenCapture(reporter.capture(driver)) + "Selecting city from list");
+			test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver)) + "Selecting city from list");
 			for (WebElement element : myList)
 				if (element.getText().contains(testCityName)) {
 					element.click();
 				}
 		} catch (Exception e) {
 			test.log(LogStatus.FAIL,
-					test.addScreenCapture(reporter.capture(driver)) + "Error while selecting city from list");
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Error while selecting city from list");
 			driver.quit();
 		}
 	}
@@ -118,11 +118,11 @@ public class cityHostelSearch {
 			String searchedCity = element.getText();
 			System.out.println(searchedCity);
 			if (cityName.equalsIgnoreCase(searchedCity)) {
-				test.log(LogStatus.PASS, test.addScreenCapture(reporter.capture(driver))
+				test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver))
 						+ "Page loaded for respective city :" + searchedCity);
 			} else {
 				System.out.println("Test case result is FAIL for city :: " + searchedCity);
-				test.log(LogStatus.PASS, test.addScreenCapture(reporter.capture(driver))
+				test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver))
 						+ "Page is not loaded for respective city :" + searchedCity);
 			}
 		} catch (StaleElementReferenceException e) {
@@ -131,11 +131,11 @@ public class cityHostelSearch {
 					"#pagebody > div.off-canvas-wrap > div.inner-wrap > div.page-contents.frcx > div.covercontainer > div.overlay-header-back > div > div > div > span"));
 			String searchedCity = element.getText();
 			if (cityName.equalsIgnoreCase(searchedCity)) {
-				test.log(LogStatus.PASS, test.addScreenCapture(reporter.capture(driver))
+				test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver))
 						+ "Page loaded for respective city :" + searchedCity);
 			} else {
 				System.out.println("Test case result is FAIL for city :: " + searchedCity);
-				test.log(LogStatus.PASS, test.addScreenCapture(reporter.capture(driver))
+				test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver))
 						+ "Page is not loaded for respective city :" + searchedCity);
 			}
 		}

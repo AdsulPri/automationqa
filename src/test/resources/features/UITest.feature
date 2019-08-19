@@ -1,18 +1,20 @@
-@HostelWorld_Homepage
-Feature: City search for hostels
-  As a user I should be able to search city wise hostels
+Feature: US01 : Hostel world website city wise search for hostels
 
-  @Test1_CityFilter
-  Scenario Outline: Home page navigation to city hostels
+  @Test1_VerifySearchByCityName
+  Scenario Outline: Home page navigation to "<city name>" hostels
     Given user is on hostelworld homepage
-    When user enters city name as <City>
-    Then I verify the hostels loaded are for same <City>
+    When user enters city name as "<city name>"
+    And selects the same from list
+    And clicks on search button
+    Then the hostels loaded are for same "<city name>" city
 
     Examples: 
-      | City      |
-      | Dublin    |
+      | city name |
+      | Mumbai    |
       | Cork      |
       | Mumbai    |
       | New Delhi |
       | New York  |
       | London    |
+      
+ 

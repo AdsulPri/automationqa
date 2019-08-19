@@ -1,13 +1,8 @@
 Feature: US02 Verifying logs
   As a support engineer I want to verify the log file generated is correct
 
-  @tag1
-  Scenario: verify range of 
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
-
+  @logtest1
+  Scenario: verify range of values in given test file
+    Given I have a file as "xyz.txt"
+    When value for each line is in betweenr upper limit "500" and lower limit "100" inclusive
+    Then the file is "valid"
