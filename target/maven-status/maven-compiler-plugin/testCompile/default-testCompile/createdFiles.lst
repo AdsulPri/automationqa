@@ -1,1 +1,3 @@
-seleniumTests\hostelWorldHomePage.class
+com\hostelworld\stepDefinition\cityHostelSearch.class
+cucumberRunner\TestRunner.class
+com\hostelworld\stepDefinition\logTestSteps.class

@@ -1,0 +1,5 @@
+com\hostelworld\utils\ReportingUtility.class
+com\hostelworld\utils\HostelWorldUITestUtility.class
+com\hostelworld\utils\FileOperationsUtility.class
+com\hostelworld\utils\HttpAPTTestUtility.class
+com\hostelworld\utils\EgitGistApiTestUtility.class
