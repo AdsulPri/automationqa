@@ -23,9 +23,9 @@ public class logTestSteps {
 	public void i_have_a_file_as(String arg1) throws Throwable {
 
 		PropertyConfigurator
-				.configure(System.getProperty("user.dir") + "\\src\\main\\resources\\config\\log4j.properties");
+				.configure(System.getProperty("user.dir") + "//src//main//resources//config//log4j.properties");
 
-		filePath = System.getProperty("user.dir") +"\\src\\test\\resources\\testdata\\randomtext.txt";
+		filePath = System.getProperty("user.dir") +"//src//test//resources//testdata//randomtext.txt";
 
 	}
 
