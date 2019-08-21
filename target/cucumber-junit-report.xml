@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="1.019115">
+<testcase classname="US02 Verifying logs" name="verify range of values in given test file" time="1.019115">
+<system-out><![CDATA[Given I have a file as "xyz.txt"............................................passed
+When value for each line is in betweenr upper limit "500" and lower limit "100" inclusive.passed
+Then the file is "valid"....................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

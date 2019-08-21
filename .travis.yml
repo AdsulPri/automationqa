@@ -32,7 +32,8 @@ jobs:
   - jdk: openjdk8
     env: JAVADOC=true
     script:
-    - mvn clean test
+    - mvn test -Dcucumber.options="--plugin junit:target/cucumber-junit-report.xml"
+    - mvn test -Dcucumber.options="--tags @Test2_FileTest1"
 
 branches:
   only:
