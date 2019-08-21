@@ -18,6 +18,8 @@ import org.json.simple.parser.ParseException;
 public class HttpAPITestUtility {
 	final static String OATH_TOKEN = "d866841af541fae884c941a42352d1407e07f3ee";
 	final static String GistURL = "https://api.github.com";
+	
+	//efe74a6ffc6f59ec094aedc7376f5752b0b1d537 
 
 	public static HttpURLConnection CreateConnection(String targetURL, String requestType) throws IOException {
 		URL url = new URL(targetURL);
