@@ -37,7 +37,7 @@ public class cityHostelSearch {
 		if (scenarioName.contains("navigation"))
 		{
 		System.setProperty("webdriver.chrome.driver",
-				System.getProperty("user.dir") + "\\src\\test\\resources\\chrome\\chromedriver1.exe");
+				System.getProperty("user.dir") + "//src//test//resources//chrome//chromedriver1.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
