@@ -14,7 +14,7 @@ public class EgitGistApiTestUtility {
 	public static void main(String[] args) throws IOException {
 
 	
-	GitHubClient client = new GitHubClient().setOAuth2Token("6e2fb96471f4efce93a8a557b4502013a461016a");
+	GitHubClient client = new GitHubClient().setOAuth2Token("d866841af541fae884c941a42352d1407e07f3ee");
 			
 	Gist gist = new Gist().setDescription("Prints a string to standard out");
 	GistFile file = new GistFile().setContent("System.out.println(\"Hey World\");");

@@ -15,8 +15,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class HttpAPTTestUtility {
-	final static String OATH_TOKEN = "6e2fb96471f4efce93a8a557b4502013a461016a";
+public class HttpAPITestUtility {
+	final static String OATH_TOKEN = "d866841af541fae884c941a42352d1407e07f3ee";
 	final static String GistURL = "https://api.github.com";
 
 	public static HttpURLConnection CreateConnection(String targetURL, String requestType) throws IOException {
@@ -49,7 +49,7 @@ public class HttpAPTTestUtility {
 	public static void CreatGistTest() throws IOException, ParseException {
 		final String endPoint = "/gists";
 		HttpURLConnection connection = CreateConnection(GistURL + endPoint, "POST");
-		SetAuthenticationHeader(connection, OATH_TOKEN);
+		SetAuthenticationHeader(connection, OATH_TOKEN.toString());
 
 		JSONObject object = new JSONObject();
 		object.put("description", "This is a java test for Gist.");
