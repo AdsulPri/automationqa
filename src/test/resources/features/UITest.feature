@@ -1,4 +1,4 @@
-Feature: US01 : Hostel world website city wise search for hostels
+Feature: US02 : Hostel world website city wise search for hostels
 
   @Test1_VerifySearchByCityName
   Scenario Outline: Home page navigation to "<city name>" hostels
