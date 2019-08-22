@@ -36,7 +36,7 @@ public class UICityHostelSearch {
 		scenarioName = scenario.getName();
 		if (scenarioName.contains("navigation")) {
 			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "//src//test//resources//chrome//chromedriver1.exe");
+					System.getProperty("user.dir") + "//src//test//resources//chrome//chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
@@ -46,7 +46,7 @@ public class UICityHostelSearch {
 
 		String reportName = scenarioName.replaceAll(" ", "");
 		reportName = scenarioName.replaceAll("\"", "");
-		report = new ExtentReports(System.getProperty("user.dir") + "\\target\\reports\\" + reportName + ".html");
+		report = new ExtentReports(System.getProperty("user.dir") + "//target//reports//" + reportName + ".html");
 		test = report.startTest(scenarioName);
 	}
 

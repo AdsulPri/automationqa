@@ -15,7 +15,7 @@ public class HostelWorldUITestUtility {
 
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Ireland\\Hostelworld\\src\\test\\resources\\chrome\\chromedriver1.exe");
+				"C:\\Ireland\\Hostelworld\\src\\test\\resources\\chrome\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
