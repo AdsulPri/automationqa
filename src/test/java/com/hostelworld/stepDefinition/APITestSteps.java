@@ -1,7 +1,6 @@
 package com.hostelworld.stepDefinition;
 
 import java.net.HttpURLConnection;
-import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
