@@ -32,7 +32,7 @@ jobs:
   - jdk: openjdk8
     env: JAVADOC=true
     script:
-    - mvn test -Dcucumber.options="--tags @API_Test" -Dorg.freemarker.loggerLibrary=none
+    - mvn test -Dcucumber.options="--tags @FileTest" -Dorg.freemarker.loggerLibrary=none
 
 branches:
   only:
