@@ -13,11 +13,13 @@ public class FileOperationsUtility {
 
 	public static void main(String[] args) throws IOException {
 		String filePath = "C:\\Users\\Adsul\\Desktop\\TestData\\randomtext.txt";
+		
 		HashMap<String, String> map = new HashMap<String, String>();
 		HashMap<String, String> errormap = new HashMap<String, String>();
 		Logger log = Logger.getLogger(FileOperationsUtility.class);
 		PropertyConfigurator
-				.configure(System.getProperty("user.dir") + "\\src\\main\\resources\\config\\log.properties");
+				.configure(System.getProperty("user.dir") + "/src/main/resources/config/log4j.properties");
+		
 
 		String line;
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));

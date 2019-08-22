@@ -82,7 +82,7 @@ public class HttpAPITestUtility {
 		while ((inputLine = in.readLine()) != null) {
 			content.append(inputLine);
 		}
-		// in.close();
+		in.close();
 		try {
 			JSONObject response = new JSONObject();
 			JSONParser parser = new JSONParser();
@@ -92,21 +92,5 @@ public class HttpAPITestUtility {
 			value = content.toString();
 		}
 		return value;
-	}
-
-	public static void main(String[] args) throws IOException, ParseException {
-
-		/*
-		 * // get content connection =
-		 * HttpAPITestUtility.sendAPIRequest("getcontent",
-		 * "2019-08-21T19:05:13Z", 200); String files =
-		 * parseResponse(connection, "filename");
-		 * 
-		 * System.out.println("file's content is :: " + files);
-		 * 
-		 * // delete connection = HttpAPITestUtility.sendAPIRequest("delete",
-		 * id, 204);
-		 */
-
 	}
 }

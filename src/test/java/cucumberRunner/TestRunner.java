@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 
 @CucumberOptions(features = { "src/test/resources/features" }, 
 glue = { "com.hostelworld.stepDefinition" }
-//,tags = {"@API_Test" }
+,tags = {"@API_Test" }
 )
 
 public class TestRunner {

@@ -1,0 +1,18 @@
+23/08/2019 04:43:31 Creating gist..
+23/08/2019 04:43:31 Fetching OATH key from config.properties file
+23/08/2019 04:43:32 Calling gist API to create gist with given description, access and file content
+23/08/2019 04:43:32 Couldn't find template in cache for "Extent.ftl"("en_IN", UTF-8, parsed); will try to load it.
+23/08/2019 04:43:32 TemplateLoader.findTemplateSource("Extent_en_IN.ftl"): Not found
+23/08/2019 04:43:32 TemplateLoader.findTemplateSource("Extent_en.ftl"): Not found
+23/08/2019 04:43:32 TemplateLoader.findTemplateSource("Extent.ftl"): Found
+23/08/2019 04:43:32 Loading template for "Extent.ftl"("en_IN", UTF-8, parsed) from "jar:file:/C:/Users/Adsul/.m2/repository/com/relevantcodes/extentreports/2.41.2/extentreports-2.41.2.jar!/com/relevantcodes/extentreports/view/Extent.ftl"
+23/08/2019 04:43:33 Couldn't find template in cache for "Extent.ftl"("en_IN", UTF-8, parsed); will try to load it.
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent_en_IN.ftl"): Not found
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent_en.ftl"): Not found
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent.ftl"): Found
+23/08/2019 04:43:33 Loading template for "Extent.ftl"("en_IN", UTF-8, parsed) from "jar:file:/C:/Users/Adsul/.m2/repository/com/relevantcodes/extentreports/2.41.2/extentreports-2.41.2.jar!/com/relevantcodes/extentreports/view/Extent.ftl"
+23/08/2019 04:43:33 Couldn't find template in cache for "Extent.ftl"("en_IN", UTF-8, parsed); will try to load it.
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent_en_IN.ftl"): Not found
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent_en.ftl"): Not found
+23/08/2019 04:43:33 TemplateLoader.findTemplateSource("Extent.ftl"): Found
+23/08/2019 04:43:33 Loading template for "Extent.ftl"("en_IN", UTF-8, parsed) from "jar:file:/C:/Users/Adsul/.m2/repository/com/relevantcodes/extentreports/2.41.2/extentreports-2.41.2.jar!/com/relevantcodes/extentreports/view/Extent.ftl"
