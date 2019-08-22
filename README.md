@@ -23,9 +23,9 @@ System prerequisites :
 Application/project prerequisites :
 
 1. Import project from git and build as maven project
-2. In ./src/main/resources/config/copnfig.properties file get your git personal token added/replaced
-3. In ./src/test/resources/testdata folder - add files you want to validate - remember the file name
-4. Download machine suitable chromedriver.exe file and replace it with the one at - ./src/test/resources/chrome/chromedriver.exe
+2. In "./src/main/resources/config/copnfig.properties" file get your git personal token added/replaced
+3. In "./src/test/resources/testdata" folder - add files which you want to validate - remember the file name
+4. Download machine suitable chromedriver.exe file and replace it with the one at, please keep the name same - ./src/test/resources/chrome/chromedriver.exe
 
 ```
 Git personal token can be generated at - https://github.com/settings/tokens
@@ -38,7 +38,7 @@ Chrome driver exes are available at - https://chromedriver.chromium.org/download
 To run the tests in ./src/test/resources/features:
 
 PART 1 : File Test(@FileTest)
-If you have added new files please replace the name in the feature file "FileTest.feature" with your file name. 
+If you have added new files please replace "Invalid.txt"(file name) in the feature file "FileTest.feature" with your file name. 
 
 ```
   Scenario: TC01 verify each value for given range
@@ -72,16 +72,19 @@ PART 3 : API Test(@API_Test)
 As per prerequisites check you have added your personal token.
 Also check access to url : https://gist.github.com/<your-git-Username>
 
-PART 4 : Integration of PART 1 with Travis CI shown as above can be built with job specified below
+PART 4 : Integration of PART 1 with Travis CI is completed and build status is shown at top of this page.
 
 ##  Running the tests
 
-1. Everything at once
+1. Everything at once:
+
 You can run ./src/test/java/cucumberRunner/TestRunner.java as JUnit test - (as the tags line is commented it will take all feature files and will execute it)
 OR
 In terminal run : mvn clean test -Dorg.freemarker.loggerLibrary=none
 
-2. Tag wise - Use appropriate tag as mentioned in above section to run it one by one.
+2. Tag wise:
+
+Use appropriate tag as mentioned in above section to run it one by one.
 OR
 In terminal run : mvn test -Dcucumber.options="--tags @FileTest" -Dorg.freemarker.loggerLibrary=none
 
@@ -90,19 +93,21 @@ In terminal run : mvn test -Dcucumber.options="--tags @FileTest" -Dorg.freemarke
 
 Results of test cases :
 
-PART 1 : File Test(@FileTest)   - File wise log file at ./target/reports/logs
-PART 2 : UI Test(@Test1_VerifySearchByCityName) - City wise html report with screenshot at ./target/reports
-PART 3 : API Test(@API_Test) - Log file detailing steps and API calls at ./target/reports/logs
+* PART 1 : File Test(@FileTest)   - File wise log file at ./target/reports/logs
+* PART 2 : UI Test(@Test1_VerifySearchByCityName) - City wise html report with screenshot at ./target/reports
+* PART 3 : API Test(@API_Test) - Log file detailing steps and API calls at ./target/reports/logs
 
 
 ## Built With
 
-* [TravisCI](https://travis-ci.com/AdsulPri/automationqa/builds) - The CI framework used
+* [TravisCI](https://travis-ci.com/AdsulPri/automationqa/builds) - The CI tool
 * [Maven](https://maven.apache.org/) - Dependency Management
 
 ## Authors
 
 * **Priyanka Adsul** - *Assignment work* - [AdsulPri](https://github.com/AdsulPri)
+
+Contributors list here is misleading and purely a result of using same .gitconfig without change, this project owned and developed by author alone!
 
 ## Acknowledgments
 
