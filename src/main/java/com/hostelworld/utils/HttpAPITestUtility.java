@@ -5,23 +5,12 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.parsing.Parser;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyExtractionOptions;
 
 public class HttpAPITestUtility {
 	final static String GistURL = "https://api.github.com";
@@ -48,13 +37,12 @@ public class HttpAPITestUtility {
 		JSONObject file1 = new JSONObject();
 		JSONObject file1Content = new JSONObject();
 		file1Content.put("content", fileContent);
-		file1.put(filename+".txt", file1Content);
+		file1.put(filename + ".txt", file1Content);
 		object.put("files", file1);
 
 		return object.toString();
 	}
 
-	@SuppressWarnings("unchecked")
 	public HttpURLConnection sendAPIRequest(String AUTH_TOKEN, String requestType, String contentToSend)
 			throws IOException {
 		HttpURLConnection connection = null;
@@ -86,10 +74,7 @@ public class HttpAPITestUtility {
 		return connection;
 	}
 
-	
-
-	public String parseResponse(HttpURLConnection connection, String parameter)
-			throws ParseException, IOException {
+	public String parseResponse(HttpURLConnection connection, String parameter) throws ParseException, IOException {
 		String value = null;
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		String inputLine;
@@ -97,7 +82,7 @@ public class HttpAPITestUtility {
 		while ((inputLine = in.readLine()) != null) {
 			content.append(inputLine);
 		}
-		//in.close();
+		// in.close();
 		try {
 			JSONObject response = new JSONObject();
 			JSONParser parser = new JSONParser();
@@ -110,17 +95,18 @@ public class HttpAPITestUtility {
 	}
 
 	public static void main(String[] args) throws IOException, ParseException {
-		
 
-		/*// get content
-		connection = HttpAPITestUtility.sendAPIRequest("getcontent", "2019-08-21T19:05:13Z", 200);
-		String files = parseResponse(connection, "filename");
-
-		System.out.println("file's content is :: " + files);
-
-		// delete
-		connection = HttpAPITestUtility.sendAPIRequest("delete", id, 204);
-*/
+		/*
+		 * // get content connection =
+		 * HttpAPITestUtility.sendAPIRequest("getcontent",
+		 * "2019-08-21T19:05:13Z", 200); String files =
+		 * parseResponse(connection, "filename");
+		 * 
+		 * System.out.println("file's content is :: " + files);
+		 * 
+		 * // delete connection = HttpAPITestUtility.sendAPIRequest("delete",
+		 * id, 204);
+		 */
 
 	}
 }
