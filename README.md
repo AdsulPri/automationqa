@@ -10,9 +10,6 @@ Bonus section:
 https://docs.travis-ci.com/user/customizing-the-build/#building-only-the-latest-commit - helps you trigger only latest build - the job settings are modified accordingly
 This job is set to check question 2 and question 3 both
 
-
-
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
