@@ -4,7 +4,14 @@
 
 # Hostel-World QA
 
-One Paragraph of project description goes here
+One Paragraph of project description goes here:
+
+Bonus section:
+https://docs.travis-ci.com/user/customizing-the-build/#building-only-the-latest-commit - helps you trigger only latest build - the job settings are modified accordingly
+This job is set to check question 2 and question 3 both
+
+
+
 
 ## Getting Started
 
@@ -51,6 +58,8 @@ Give an example
 ### And coding style tests
 
 Explain what these tests test and why
+
+
 
 ```
 Give an example

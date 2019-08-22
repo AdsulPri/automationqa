@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -53,5 +54,20 @@ public class FileOperationsUtility {
 			log.info(key + " " + errormap.get(key));
 		}
 	}
-
+	
+	public static String getConfigProperty(String parameter) throws IOException{
+	FileReader reader=new FileReader(System.getProperty("user.dir") + "/src/main/resources/config/config.properties");
+	Properties p=new Properties();
+	p.load(reader);
+	String value=p.getProperty(parameter);
+	return  value;
+	}
+	
+	public static void setConfigProperty(String value, String parameter) throws IOException{
+		FileReader reader=new FileReader(System.getProperty("user.dir") + "/src/main/resources/config/config.properties");
+		Properties p=new Properties();
+		p.load(reader);
+		p.setProperty(value, parameter);
+		
+		}
 }

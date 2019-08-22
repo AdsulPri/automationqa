@@ -9,17 +9,23 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.parsing.Parser;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBodyExtractionOptions;
+
 public class HttpAPITestUtility {
-	final static String OATH_TOKEN = "d866841af541fae884c941a42352d1407e07f3ee";
 	final static String GistURL = "https://api.github.com";
-	
-	//efe74a6ffc6f59ec094aedc7376f5752b0b1d537 
+	static HttpAPITestUtility HttpAPITestUtility = new HttpAPITestUtility();
 
 	public static HttpURLConnection CreateConnection(String targetURL, String requestType) throws IOException {
 		URL url = new URL(targetURL);
@@ -33,65 +39,88 @@ public class HttpAPITestUtility {
 		connection.setRequestProperty("Authorization", "token " + token);
 	}
 
-	public static String getParamsString(Map<String, String> params) throws UnsupportedEncodingException {
-		StringBuilder result = new StringBuilder();
-
-		for (Map.Entry<String, String> entry : params.entrySet()) {
-			result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-			result.append("=");
-			result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-			result.append("&");
-		}
-
-		String resultString = result.toString();
-		return resultString.length() > 0 ? resultString.substring(0, resultString.length() - 1) : resultString;
-	}
-
 	@SuppressWarnings("unchecked")
-	public static void CreatGistTest() throws IOException, ParseException {
-		final String endPoint = "/gists";
-		HttpURLConnection connection = CreateConnection(GistURL + endPoint, "POST");
-		SetAuthenticationHeader(connection, OATH_TOKEN.toString());
-
+	public String getJsonObject(String description, Boolean isPublic, String filename, String fileContent) {
 		JSONObject object = new JSONObject();
-		object.put("description", "This is a java test for Gist.");
-		object.put("public", new Boolean(false));
+		object.put("description", description);
+		object.put("public", new Boolean(isPublic));
 
 		JSONObject file1 = new JSONObject();
 		JSONObject file1Content = new JSONObject();
-		file1Content.put("content", "This is the java JSON test for Gist API.");
-		file1.put("file1.txt", file1Content);
+		file1Content.put("content", fileContent);
+		file1.put(filename+".txt", file1Content);
 		object.put("files", file1);
 
-		System.out.println(object.toString());
+		return object.toString();
+	}
 
-		connection.setDoOutput(true);
-		DataOutputStream out = new DataOutputStream(connection.getOutputStream());
-		out.writeBytes(object.toString());
-		out.flush();
-		out.close();
+	@SuppressWarnings("unchecked")
+	public HttpURLConnection sendAPIRequest(String AUTH_TOKEN, String requestType, String contentToSend)
+			throws IOException {
+		HttpURLConnection connection = null;
+		String contents = null;
+		if (requestType.equals("create")) {
+			final String endPoint = "/gists";
+			connection = CreateConnection(GistURL + endPoint, "POST");
+			SetAuthenticationHeader(connection, AUTH_TOKEN.toString());
+			contents = contentToSend;
 
-		int status = connection.getResponseCode();
-		System.out.println("Status code  " + status);
+			connection.setDoOutput(true);
+			DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+			out.writeBytes(contents);
+			out.flush();
+			out.close();
+			// 201
+		} else if (requestType.equals("getcontent")) {
+			final String endPoint = "/gists";
+			connection = CreateConnection(GistURL + endPoint, "GET");
+			SetAuthenticationHeader(connection, AUTH_TOKEN.toString());
+			// 200
+		} else if (requestType.equals("delete")) {
+			final String endPoint = "/gists/" + contentToSend;
+			connection = CreateConnection(GistURL + endPoint, "DELETE");
+			SetAuthenticationHeader(connection, AUTH_TOKEN.toString());
+			// 204
+		}
 
+		return connection;
+	}
+
+	
+
+	public String parseResponse(HttpURLConnection connection, String parameter)
+			throws ParseException, IOException {
+		String value = null;
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		String inputLine;
 		StringBuffer content = new StringBuffer();
 		while ((inputLine = in.readLine()) != null) {
 			content.append(inputLine);
 		}
-		in.close();
-		System.out.println(content.toString());
-
-		JSONObject response = new JSONObject();
-		JSONParser parser = new JSONParser();
-		response = (JSONObject) parser.parse(content.toString());
-		System.out.println(response.get("url"));
-		connection.disconnect();
-
+		//in.close();
+		try {
+			JSONObject response = new JSONObject();
+			JSONParser parser = new JSONParser();
+			response = (JSONObject) parser.parse(content.toString());
+			value = (response.get(parameter)).toString();
+		} catch (Exception e) {
+			value = content.toString();
+		}
+		return value;
 	}
 
 	public static void main(String[] args) throws IOException, ParseException {
-		CreatGistTest();
+		
+
+		/*// get content
+		connection = HttpAPITestUtility.sendAPIRequest("getcontent", "2019-08-21T19:05:13Z", 200);
+		String files = parseResponse(connection, "filename");
+
+		System.out.println("file's content is :: " + files);
+
+		// delete
+		connection = HttpAPITestUtility.sendAPIRequest("delete", id, 204);
+*/
+
 	}
 }

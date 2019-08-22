@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -24,27 +25,26 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class cityHostelSearch {
+public class UICityHostelSearch {
 	WebDriver driver;
 	String testCityName = null;
 	static ExtentTest test;
 	static ExtentReports report;
-	String scenarioName=null;
+	String scenarioName = null;
 
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioName = scenario.getName();
-		if (scenarioName.contains("navigation"))
-		{
-		System.setProperty("webdriver.chrome.driver",
-				System.getProperty("user.dir") + "//src//test//resources//chrome//chromedriver1.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		if (scenarioName.contains("navigation")) {
+			System.setProperty("webdriver.chrome.driver",
+					System.getProperty("user.dir") + "//src//test//resources//chrome//chromedriver1.exe");
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		}
 
 		// Reporting
-		
+
 		String reportName = scenarioName.replaceAll(" ", "");
 		reportName = scenarioName.replaceAll("\"", "");
 		report = new ExtentReports(System.getProperty("user.dir") + "\\target\\reports\\" + reportName + ".html");
@@ -58,8 +58,8 @@ public class cityHostelSearch {
 			test.log(LogStatus.PASS,
 					test.addScreenCapture(ReportingUtility.capture(driver)) + "Navigated to Hostel world website");
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL,
-					test.addScreenCapture(ReportingUtility.capture(driver)) + "Error while navigating to Hostel world website");
+			test.log(LogStatus.FAIL, test.addScreenCapture(ReportingUtility.capture(driver))
+					+ "Error while navigating to Hostel world website");
 			driver.quit();
 		}
 	}
@@ -78,8 +78,8 @@ public class cityHostelSearch {
 			test.log(LogStatus.PASS,
 					test.addScreenCapture(ReportingUtility.capture(driver)) + "Entered city name as " + cityName);
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL,
-					test.addScreenCapture(ReportingUtility.capture(driver)) + "Error while entering city name as " + cityName);
+			test.log(LogStatus.FAIL, test.addScreenCapture(ReportingUtility.capture(driver))
+					+ "Error while entering city name as " + cityName);
 			driver.quit();
 		}
 	}
@@ -90,7 +90,8 @@ public class cityHostelSearch {
 			List<WebElement> myList = new WebDriverWait(driver, 20)
 					.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(
 							"#top-search > div.d-block.d-block.search-form-background.pt-2.pb-2 > div > div.suggestions-container > ul > li.hover")));
-			test.log(LogStatus.PASS, test.addScreenCapture(ReportingUtility.capture(driver)) + "Selecting city from list");
+			test.log(LogStatus.PASS,
+					test.addScreenCapture(ReportingUtility.capture(driver)) + "Selecting city from list");
 			for (WebElement element : myList)
 				if (element.getText().contains(testCityName)) {
 					element.click();
@@ -148,9 +149,8 @@ public class cityHostelSearch {
 
 	@After
 	public void tearDown() {
-		if (scenarioName.contains("navigation"))
-		{
-		driver.quit();
+		if (scenarioName.contains("navigation")) {
+			driver.quit();
 		}
 		report.endTest(test);
 		report.flush();

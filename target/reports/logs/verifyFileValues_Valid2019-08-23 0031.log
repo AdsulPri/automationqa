@@ -1,0 +1,13 @@
+23/08/2019 00:31:41 **********
+23/08/2019 00:31:41 Starting Test
+23/08/2019 00:31:41 File :C:\Ireland\Hostelworld/src/test/resources/testdata/Valid.txt
+23/08/2019 00:31:41 Upper limit (inclusive) is :500
+23/08/2019 00:31:41 Lower limit (inclusive) is :100
+23/08/2019 00:31:41 Test status is PASS
+23/08/2019 00:31:41 End of test
+23/08/2019 00:31:41 **********
+23/08/2019 00:31:41 Couldn't find template in cache for "Extent.ftl"("en_IN", UTF-8, parsed); will try to load it.
+23/08/2019 00:31:41 TemplateLoader.findTemplateSource("Extent_en_IN.ftl"): Not found
+23/08/2019 00:31:41 TemplateLoader.findTemplateSource("Extent_en.ftl"): Not found
+23/08/2019 00:31:41 TemplateLoader.findTemplateSource("Extent.ftl"): Found
+23/08/2019 00:31:41 Loading template for "Extent.ftl"("en_IN", UTF-8, parsed) from "jar:file:/C:/Users/Adsul/.m2/repository/com/relevantcodes/extentreports/2.41.2/extentreports-2.41.2.jar!/com/relevantcodes/extentreports/view/Extent.ftl"
